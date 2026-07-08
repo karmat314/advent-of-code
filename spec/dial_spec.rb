@@ -1,12 +1,16 @@
-require_relative '../day-1/dial'
 require_relative '../day-1/custom_error'
+require_relative '../day-1/dial_behaviour'
 
-RSpec.describe Dial do
+class DummyDial
+  include DialBehavior
+end
+
+RSpec.shared_examples 'a dial' do
   let(:dial) { described_class.new(max_val: 99, curr_val: 50) }
 
   context 'creation' do
-    it 'returns a Dial object' do
-      expect(dial).to be_instance_of(Dial)
+    it 'returns an instance of the described class' do
+      expect(dial).to be_instance_of(described_class)
     end
 
     it 'has correct default values' do
@@ -37,5 +41,19 @@ RSpec.describe Dial do
       dial.rotate(rotation: 'R50')
       expect(dial.zero_count).to eq(before + 1)
     end
+  end
+
+  context 'password' do
+    it 'returns the zero_count as the password' do
+      dial.rotate(rotation: 'R50')
+      dial.rotate(rotation: 'R50')
+      expect(dial.password).to eq(dial.zero_count)
+    end
+  end
+end
+
+RSpec.describe DialBehavior do
+  it_behaves_like 'a dial' do
+    let(:described_class) { DummyDial }
   end
 end
