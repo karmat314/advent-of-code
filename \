@@ -1,0 +1,3 @@
+curr = 50
+delta = 1000
+puts (curr + delta) % 100
