@@ -47,7 +47,7 @@ RSpec.shared_examples 'a dial' do
     it 'returns the zero_count as the password' do
       dial.rotate(rotation: 'R50')
       dial.rotate(rotation: 'R50')
-      expect(dial.password).to eq(dial.zero_count)
+      expect(dial.get_password).to eq(dial.zero_count)
     end
   end
 end
