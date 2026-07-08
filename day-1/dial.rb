@@ -1,4 +1,4 @@
-require './custom_error'
+require_relative './custom_error'
 
 class Dial
   attr_reader :min_val, :max_val, :curr_val, :zero_count

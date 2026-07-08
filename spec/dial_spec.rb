@@ -1,5 +1,5 @@
-require './dial'
-require './custom_error'
+require_relative '../day-1/dial'
+require_relative '../day-1/custom_error'
 
 RSpec.describe Dial do
   let(:dial) { described_class.new(max_val: 99, curr_val: 50) }
