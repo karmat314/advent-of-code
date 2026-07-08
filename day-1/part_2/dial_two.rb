@@ -11,22 +11,7 @@ class DialTwo
   end
 
   def count_zero_passes(rotation:)
-    rotation_val = rotation[1..].to_i
-    direction = rotation[0]
-
-    if direction == 'R'
-      low  = @curr_val + 1
-      high = @curr_val + rotation_val
-    else # 'L'
-      low  = @curr_val - rotation_val
-      high = @curr_val - 1
-    end
-
-    passes = (high / 100) - ((low - 1) / 100)
-    @zero_pass_count += passes
-
-    rotate(rotation: rotation)
-    passes
+    # TO-DO
   end
 
   def count_zero_passes_in_rotation_sequence(file_path)
