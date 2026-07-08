@@ -1,5 +1,0 @@
-class Dial 
-  def initizalize(max_val:)
-    @max_val = max_val
-  end
-end
