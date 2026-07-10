@@ -1,8 +1,10 @@
 require_relative './dial_two'
 class DialCracker
   def get_password
-    # TO-DO
+    dial = DialTwo.new
+    dial.count_zero_passes_in_rotation_sequence('../input.txt')
+  puts dial.get_zero_passes
   end
 end
 
-puts DialCracker.new.get_password
+DialCracker.new.get_password
