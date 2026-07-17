@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class IdChecker
   attr_reader :id_ranges, :invalid_ids
 
@@ -9,7 +11,7 @@ class IdChecker
 
   def check_ids
     @id_ranges.each do |id|
-      arr = id.to_s.split('')
+      arr = id.to_s.chars
       half = arr.size / 2
       left  = arr.take(half)
       right = arr.drop(half)
@@ -32,7 +34,7 @@ class IdChecker
   private
 
   def extract_ranges
-    unformatted_ranges = @id_ranges.join('').split(',')
+    unformatted_ranges = @id_ranges.join.split(',')
     formatted = []
     unformatted_ranges.each do |range|
       split_range = range.split('-').map(&:to_i)

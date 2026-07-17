@@ -1,10 +1,12 @@
-require_relative './custom_error'
+# frozen_string_literal: true
+
+require_relative 'custom_error'
 
 module DialBehavior
   attr_reader :min_val, :max_val, :curr_val, :zero_count
 
   def initialize(max_val: 99, curr_val: 50)
-    raise CustomError if max_val < 0 or curr_val < 0
+    raise CustomError if max_val.negative? || curr_val.negative?
     raise CustomError if curr_val > max_val
 
     @min_val = 0
@@ -19,7 +21,7 @@ module DialBehavior
     rotationVal = rotation[1..].to_i
     rotationVal = -rotationVal if rotation[0] == 'L'
     @curr_val = (@curr_val + rotationVal) % 100
-    return unless @curr_val == 0
+    return unless @curr_val.zero?
 
     @zero_count += 1
   end

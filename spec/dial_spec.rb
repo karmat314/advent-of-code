@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../day-1/custom_error'
 require_relative '../day-1/dial_behaviour'
 
