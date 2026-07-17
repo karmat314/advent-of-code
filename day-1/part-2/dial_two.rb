@@ -7,7 +7,7 @@ class DialTwo
 
   def initialize(max_val: 99, curr_val: 50)
     super
-    @zero_pass_count = 0
+          @zero_pass_count = 0
   end
 
   def count_zero_passes(rotation:)
