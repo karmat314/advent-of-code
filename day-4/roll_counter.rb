@@ -12,6 +12,9 @@ class RollCounter
 
   def get_adjacent_roll_count
     grid = @roll_grid
+    removable_roll_indices = []
+    removable_roll_count = 0
+
     (0...grid.length).each do |row|
       (0...grid[0].length).each do |col|
         next unless grid[row][col] == '@'
@@ -23,11 +26,34 @@ class RollCounter
             next if (i == row) && (j == col)
             next if grid[i]&.[](j).nil?
 
-            adjacent_roll_count += grid[i][j] == '@' ? 1 : 0
+            adjacent_roll_count += 1 if grid[i][j] == '@'
           end
         end
-        @roll_count += adjacent_roll_count < 4 ? 1 : 0
+
+        if adjacent_roll_count < 4
+          removable_roll_count += 1
+          removable_roll_indices << [row, col]
+        end
       end
+    end
+
+    [removable_roll_count, removable_roll_indices]
+  end
+
+  def remove_rolls(indices)
+    indices.each do |pair|
+      @roll_grid[pair[0]][pair[1]] = '.'
+    end
+  end
+
+  def get_total_removable_rolls
+    while true
+      removable_roll_count, removable_roll_indices = get_adjacent_roll_count
+      break if removable_roll_count == 0
+
+      @roll_count += removable_roll_count
+
+      remove_rolls(removable_roll_indices)
     end
   end
 
