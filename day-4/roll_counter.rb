@@ -47,9 +47,9 @@ class RollCounter
   end
 
   def get_total_removable_rolls
-    while true
+    loop do
       removable_roll_count, removable_roll_indices = get_adjacent_roll_count
-      break if removable_roll_count == 0
+      break if removable_roll_count.zero?
 
       @roll_count += removable_roll_count
 
