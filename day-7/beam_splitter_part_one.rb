@@ -1,4 +1,4 @@
-class BeamSplitterDayOne
+class BeamSplitterPartOne
   attr_reader :tachyon_lines, :split_count
 
   def initialize
@@ -18,7 +18,7 @@ class BeamSplitterDayOne
   private
 
   def init_beam
-    @tachyon_lines[1][@tachyon_lines[0].index('S')] += 1
+    @tachyon_lines[1][@tachyon_lines[0].index('S')] = '|'
     @beam_locations[1] = [@tachyon_lines[0].index('S')]
   end
 
